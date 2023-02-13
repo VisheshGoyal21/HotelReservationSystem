@@ -17,6 +17,15 @@ price float,
 user_id int foreign key references UserDetails(id),
 );
 
+create table UserReservation(
+	reserve_id int primary key,
+	room_id int foreign key references Hotel(room_id),
+	user_id int foreign key references UserDetails(id),
+	start_d datetime,
+	end_d datetime
+);
 
+alter table UserDetails drop column isManager;
+alter table UserDetails add isManager bit default 0;
 
-
+select * from UserDetails;
